@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
+import Game from './pages/Game';
 
 function App() {
   return (
     <div className="App">
-      <h1>MEU DEUS</h1>
+      <h1>Wordle</h1>
+      <Game />
     </div>
   );
 }
