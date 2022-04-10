@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { number } from 'prop-types';
-import Provider from '../context/Provider';
+import Context from '../context/Context';
 
 function Letter({ letterPos, attemptVal }) {
-  const { board } = useContext(Provider);
+  const { board } = useContext(Context);
 
   const letter = board[attemptVal][letterPos];
   return (
