@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import Context from '../context/Context';
 
 const Wrapper = styled.div`
   width: 50px;
@@ -16,8 +17,29 @@ const Wrapper = styled.div`
 `;
 
 function Key({ keyVal, bigkey }) {
+  const {
+    onSelectLetter,
+    onDelete,
+    onEnter,
+  } = useContext(Context);
+
+  const setSelectedLetter = () => {
+    if (keyVal === 'ENTER') {
+      onEnter();
+    } else if (keyVal === 'DELETE') {
+      onDelete();
+    } else {
+      onSelectLetter(keyVal);
+    }
+  };
+
   return (
-    <Wrapper id={ bigkey && 'big' }>{keyVal}</Wrapper>
+    <Wrapper
+      id={ bigkey && 'big' }
+      onClick={ setSelectedLetter }
+    >
+      {keyVal}
+    </Wrapper>
   );
 }
 
