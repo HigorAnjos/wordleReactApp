@@ -1,4 +1,4 @@
-export default bordDefault = [
+export default [
   ['', '', '', '', ''],
   ['', '', '', '', ''],
   ['', '', '', '', ''],
