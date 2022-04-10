@@ -42,8 +42,9 @@ function Provider({ children }) {
   const onEnter = () => {
     const FIVE = 5;
     if (currAttempt.letterPos !== FIVE) return;
+
     let currWord = '';
-    for (let i = 0; i <= 5; i += 1) {
+    for (let i = 0; i < 5; i += 1) {
       currWord += board[currAttempt.attempt][i];
     }
 
