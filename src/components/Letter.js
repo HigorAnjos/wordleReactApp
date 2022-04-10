@@ -12,7 +12,7 @@ const LetterCss = styled.div`
   place-items: center;
   font-size: 30px;
   font-weight: bolder;
-  color: white;
+  color: white, ;
   padding: 5px;
   font-family: Arial, Helvetica, sans-serif;
 `;
