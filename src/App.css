@@ -11,3 +11,7 @@ body {
   text-align: center;
   width: 100vw;
 }
+
+#big {
+  width: 100px;
+}
