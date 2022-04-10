@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   cursor: pointer;
 `;
 
-function Key({ keyVal, bigkey }) {
+function Key({ keyVal, bigkey, disabled }) {
   const {
     onSelectLetter,
     onDelete,
@@ -35,7 +35,7 @@ function Key({ keyVal, bigkey }) {
 
   return (
     <Wrapper
-      id={ bigkey && 'big' }
+      id={ bigkey ? 'big' : disabled && 'disabled' }
       onClick={ setSelectedLetter }
     >
       {keyVal}

@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { node } from 'prop-types';
-import Words from '../components/Words';
+import wordsDefault, { generateWordSet } from '../components/Words';
 import Context from './Context';
 
 function Provider({ children }) {
-  const [board, setBoard] = useState(Words);
+  const [board, setBoard] = useState(wordsDefault);
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letterPos: 0 });
+  const [wordSet, setWordSet] = useState(new Set());
+  const [disabledLetters, setDisabledLetters] = useState([]);
+
+  const correctWord = 'RIGHT';
+
+  useEffect(() => {
+    generateWordSet().then((words) => {
+      console.log(words.wordSet);
+      setWordSet(words.wordSet);
+    });
+  }, []);
 
   const onSelectLetter = (keyVal) => {
     const LIMIT_LINE = 4;
@@ -31,10 +42,20 @@ function Provider({ children }) {
   const onEnter = () => {
     const FIVE = 5;
     if (currAttempt.letterPos !== FIVE) return;
-    setCurrAttempt({
-      attempt: currAttempt.attempt + 1,
-      letterPos: 0,
-    });
+    let currWord = '';
+    for (let i = 0; i <= 5; i += 1) {
+      currWord += board[currAttempt.attempt][i];
+    }
+
+    if (wordSet.has(currWord.toLowerCase())) {
+      setCurrAttempt({ attempt: currAttempt.attempt + 1, letter: 0 });
+    } else {
+      alert('Word not found');
+    }
+
+    if (currWord === correctWord) {
+      alert('Game Over');
+    }
   };
 
   const value = {
@@ -45,6 +66,9 @@ function Provider({ children }) {
     onSelectLetter,
     onDelete,
     onEnter,
+    correctWord,
+    disabledLetters,
+    setDisabledLetters,
   };
 
   return (

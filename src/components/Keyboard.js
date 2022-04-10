@@ -37,7 +37,7 @@ function Keyboard() {
   const keys2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
   const keys3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
 
-  const { onEnter, onDelete, onSelectLetter } = useContext(Context);
+  const { onEnter, onDelete, onSelectLetter, disabledLetters } = useContext(Context);
 
   const handleKeyboard = useCallback((event) => {
     if (event.key === 'Enter') {
@@ -75,14 +75,14 @@ function Keyboard() {
       <Line1>
         {keys1.map((keyBord, i) => (
           <div key={ i }>
-            <Key keyVal={ keyBord } />
+            <Key keyVal={ keyBord } disabled={ disabledLetters.includes(keyBord) } />
           </div>
         ))}
       </Line1>
       <Line2>
         {keys2.map((keyBord, i) => (
           <div key={ i }>
-            <Key keyVal={ keyBord } />
+            <Key keyVal={ keyBord } disabled={ disabledLetters.includes(keyBord) } />
           </div>
         ))}
       </Line2>
@@ -90,7 +90,7 @@ function Keyboard() {
         <Key keyVal="ENTER" bigkey />
         {keys3.map((keyBord, i) => (
           <div key={ i }>
-            <Key keyVal={ keyBord } />
+            <Key keyVal={ keyBord } disabled={ disabledLetters.includes(keyBord) } />
           </div>
         ))}
         <Key keyVal="DELETE" bigkey />
