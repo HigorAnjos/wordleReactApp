@@ -24,6 +24,7 @@ function Letter({ letterPos, attemptVal }) {
     currAttempt,
     setDisabledLetters,
   } = useContext(Context);
+
   const letter = board[attemptVal][letterPos];
 
   const correct = correctWord[letterPos] === letter;

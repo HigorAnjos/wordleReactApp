@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Board from '../components/Board';
+import GameOver from '../components/GameOver';
 import Keyboard from '../components/Keyboard';
+import Context from '../context/Context';
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -13,10 +15,11 @@ const Wrapper = styled.div`
 `;
 
 function Game() {
+  const { gameOver } = useContext(Context);
   return (
     <Wrapper>
       <Board />
-      <Keyboard />
+      { gameOver.gameOver ? <GameOver /> : <Keyboard /> }
     </Wrapper>
   );
 }

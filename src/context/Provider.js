@@ -8,6 +8,10 @@ function Provider({ children }) {
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letterPos: 0 });
   const [wordSet, setWordSet] = useState(new Set());
   const [disabledLetters, setDisabledLetters] = useState([]);
+  const [gameOver, setGameOver] = useState({
+    gameOver: false,
+    guessedWord: false,
+  });
 
   const correctWord = 'RIGHT';
 
@@ -49,13 +53,24 @@ function Provider({ children }) {
     }
 
     if (wordSet.has(currWord.toLowerCase())) {
-      setCurrAttempt({ attempt: currAttempt.attempt + 1, letter: 0 });
+      setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos: 0 });
     } else {
       alert('Word not found');
     }
 
     if (currWord === correctWord) {
-      alert('Game Over');
+      setGameOver({
+        gameOver: true,
+        guessedWord: true,
+      });
+      return;
+    }
+
+    if (currAttempt.attempt === 4) {
+      setGameOver({
+        gameOver: true,
+        guessedWord: false,
+      });
     }
   };
 
@@ -70,6 +85,8 @@ function Provider({ children }) {
     correctWord,
     disabledLetters,
     setDisabledLetters,
+    gameOver,
+    setGameOver,
   };
 
   return (
