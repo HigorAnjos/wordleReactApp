@@ -8,17 +8,16 @@ function Provider({ children }) {
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letterPos: 0 });
   const [wordSet, setWordSet] = useState(new Set());
   const [disabledLetters, setDisabledLetters] = useState([]);
+  const [correctWord, setCorrectWord] = useState('');
   const [gameOver, setGameOver] = useState({
     gameOver: false,
     guessedWord: false,
   });
 
-  const correctWord = 'RIGHT';
-
   useEffect(() => {
     generateWordSet().then((words) => {
-      console.log(words.wordSet);
       setWordSet(words.wordSet);
+      setCorrectWord(words.todaysWord);
     });
   }, []);
 
