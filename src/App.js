@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Game from './pages/Game';
 import styled from 'styled-components';
+import Game from './pages/Game';
 
 const Title = styled.h1`
   font-size: 3em;
