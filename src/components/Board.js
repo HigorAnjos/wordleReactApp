@@ -11,16 +11,15 @@ const Row = styled.div`
 `;
 
 const BoardCss = styled.div`
-  width: 450px;
-  height: 550px;
+  width: 350px;
+  height: 450px;
   border: 1px solid white;
   display: flex;
   flex-direction: column;
-  margin: 5px;
+
 `;
 
 function Board() {
-  // const { board } = useContext(Context);
   return (
     <BoardCss>
       <Row>

@@ -7,10 +7,9 @@ import Context from '../context/Context';
 
 const Wrapper = styled.div`
   width: 100vw;
-  height: calc(100vh - 170px);
   display: flex;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 10px;
   flex-direction: column;
 `;
 
